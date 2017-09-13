@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 
 def test_func(x):
-    return 1 - x*x + 0.444444*x - 0.1*x**3 + np.sin(x*2*np.pi)
+    return 1 - x*x + (0.444444*x - 0.1*x**3)*np.sin(3*x*np.pi)
+
 
 def generate_mock_data(N=20,  seed=100, noise=None):
     """
@@ -21,7 +22,7 @@ def generate_mock_data(N=20,  seed=100, noise=None):
 
     x_min = -1
     x_max = 2.
-    x = np.random.uniform(x_min, x_max, size=N)
+    x = np.random.normal(1, 1, size=N)
 #    x = np.array([0., 0.45, 0.46, 0.48])
     y = test_func(x)
 
