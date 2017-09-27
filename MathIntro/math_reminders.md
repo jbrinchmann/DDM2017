@@ -28,7 +28,9 @@ Linear algebra typically deals with various dimensional structures. I will refer
  
 ### The transpose of a matrix
 
-This is denoted as $\mathbf{A}^T$ and is defined in coordinates as \\[ \left(\mathbf{A}^{T}\right)_{i, j} = {A}\_{j, i}\\]. The transpose of a vector is also defined and an $N$ element vector is then transformed into an $1\times N$ element matrix, although it is more common to call it a column vector (assuming that the first index is the row).
+This is denoted as $\mathbf{A}^T$ and is defined in coordinates as \\[ \left(\mathbf{A}^{T}\right)_{i, j} = {A}\_{j, i}\\] 
+
+The transpose of a vector is also defined and an $N$ element vector is then transformed into an $1\times N$ element matrix, although it is more common to call it a column vector (assuming that the first index is the row).
 
 Note that in `numpy` the `transpose` function is somewhat different - it just reverses the axes. This gives unexpected results for vectors. See for instance this code snippet:
 
