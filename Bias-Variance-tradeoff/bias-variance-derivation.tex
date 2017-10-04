@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+\section{Deriving the bias-variance trade-off equation}
+\label{sec:deriv-bias-vari}
+
+Let us write the true relationship between $Y$ and $x$ as
+\begin{equation}
+  \label{eq:1}
+  Y(x) = f(x) + \epsilon,
+\end{equation}
+where $\epsilon$ has a zero mean, $E[\epsilon] = 0$, and a variance $E[\epsilon^2]=\sigma_\epsilon^2$. 
+
+We now fit a function to data from this underlying relation and get an estimating function, $\hat{f}(x)$. We are now interested in what the error is in our prediction at some point $x$. To make progress here we first need to specify what we mean by error --- in other words we need to specify a loss, or error, function. Let us here use the squared error, so that we can write
+\begin{equation}
+  \label{eq:2}
+  \mathrm{Error}(x) = \left(Y(x)-\hat{f}(x)\right)^2.
+\end{equation}
+However this is a random quantity (since $\hat{f}$ is), so to make progress we need to take the expectation value of this 
+\begin{equation}
+  \label{eq:3}
+  \mathrm{Err}(x) = E\left[\mathrm{Error}(x)\right] = E\left[(Y(x)-\hat{f}(x))^2\right]. 
+\end{equation}
+
+This is then the error that we want to investigate further. Before we continue it is convenient to recall how we define the bias and the variance of the estimator:
+\begin{equation}
+  \label{eq:4}
+  \mathrm{Bias}\left(\hat{f}(x)\right) = E\left[\hat{f}(x)\right]-f(x)
+\end{equation}
+and 
+\begin{equation}
+  \label{eq:5}
+  \mathrm{Var}\left(\hat{f}(x)\right) = E\left[ \left(f(x) - E\left[\hat{f}(x)\right]\right)^2 \right].
+\end{equation}
+
+In what follows I will suppress the argument $x$ for simplicity, it should be obvious where it has to be inserted. 
+
+We can return to equation~(\ref{eq:3}). If we expand this, we get
+\begin{equation}
+  \label{eq:6}
+  E\left[(Y-\hat{f})^2\right] = E\left[(f-\hat{f})^2\right] + 2 E\left[(f-\hat{f})\epsilon\right] + E\left[\epsilon^2\right].
+\end{equation}
+The last term on the right is easy since we had defined $E[\epsilon^2]=\sigma_\epsilon^2$. The second term on the right is also easily. Because for uncorrelated random variables $X$ and $Y$, $E[X Y]=E[X] E[Y]$, and since $E[\epsilon]=0$, the second term is zero.
+
+This then leaves us only with $E[(f-\hat{f})^2]$. To make progress here, we add and subtract $E[\hat{f}]$ inside the parenthesis (because this term is needed for the bias and variance definitions):
+\begin{align}
+  \label{eq:7}
+ E\left[(f-\hat{f})^2\right]  = & E\left[(f-E[\hat{f}] + E[\hat{f}] - \hat{f})^2\right] \\
+  = & E\left[ (f-E[\hat{f}])^2\right] + 2 E\left[\left(f-E[\hat{f}]\right) \left(E[\hat{f}]-\hat{f}\right)\right] + \\
+& + E\left[ (\hat{f}-E[\hat{f}])^2\right].
+\end{align}
+Here we recognised the last term on the right as $\mathrm{Var}(\hat{f})$ from equation~(\ref{eq:5}), and the first term is $\mathrm{Bias}(\hat{f})^2$ from equation~(\ref{eq:4}) and the realisation that the argument to the expectation value is not a random variable so the expectation operation just returns the argument.  
+
+That leaves only the middle term on the right, but we can see that this is of the form $E[a X]$ with $a$ a constant and $X$ a random variable. In this case $X=E[\hat{f}]-\hat{f}$ and by definition of $E[\hat{f}]$ we have $E[X]=0$. Thus the middle term disappear. 
+
+That leaves us with 
+\begin{equation}
+  \label{eq:8}
+  \mathrm{Err}(x) = \sigma_\epsilon^2 + \mathrm{Bias}^2(x) + \mathrm{Var}(x),
+\end{equation}
+which is the bias-variance trade-off equation.
+
+\end{document}
