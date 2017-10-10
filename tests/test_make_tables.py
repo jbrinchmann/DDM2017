@@ -1,3 +1,5 @@
+# Simple test script
+
 import unittest
 from Database.make_tables_python import *
 import sqlite3 as lite
