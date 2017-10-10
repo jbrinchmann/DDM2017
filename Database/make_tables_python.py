@@ -46,7 +46,7 @@ def load_db(dbname="DDM17-python.db"):
         stars=load_data('YAEPS.stars-table.dat')
         for row in stars:
             command = "INSERT INTO Stars VALUES({0},{1},'{2}',{3},{4},{5},{6})".format(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-            print command
+            print(command)
             con.execute(command)
    
         #
@@ -75,7 +75,7 @@ def load_db(dbname="DDM17-python.db"):
         observations=load_data('YAEPS.observations-table.dat')
         for row in observations:
             command = "INSERT INTO Observations VALUES({0},'{1}',{2},{3},{4},'{5}')".format(row[0], row[1], row[2], row[3], row[4], row[5])
-            print command
+            print(command)
             con.execute(command)
 
 if __name__ == "__main__":
