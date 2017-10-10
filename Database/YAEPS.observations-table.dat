@@ -1,4 +1,4 @@
-# ID Field      Date      Exptime   Quality   WhereStored
+#ID, Field,      Date,      Exptime,   Quality,   WhereStored
 1,StF-043,92.9885764,23.2,1,/disks/yaeps-1/StF-043.fits
 2,StF-044,97.3323764,30.2,1,/disks/yaeps-1/StF-044.fits
 3,StF-045,93.5532134,29.5,0.5,/disks/yaeps-1/StF-045.fits
